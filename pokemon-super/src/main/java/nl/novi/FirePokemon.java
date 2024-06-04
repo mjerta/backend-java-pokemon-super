@@ -6,7 +6,6 @@ import java.util.List;
 public class FirePokemon extends Pokemon {
 
   private String special;
-  private List<ArrayList> attacks;
 //  private String sound;
 //  private String defence;
 //  private String attack;
