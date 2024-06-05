@@ -1,27 +1,40 @@
 package nl.novi;
 
 public abstract class Pokemon {
-  private int name;
+  private String name;
   private int level;
   private int hp;
   private int xp;
   private double height;
   private double weight;
+  private String type;
+  private String special;
+  private int defence;
 
-  public Pokemon(int name, int level, int hp, int xp, double height, double weight) {
-    this.name = name;
+  public Pokemon(int level, int hp, int xp, double height, double weight, int defence) {
     this.level = level;
     this.hp = hp;
     this.xp = xp;
     this.height = height;
     this.weight = weight;
+    this.defence = defence;
+//    this.type = type;
+//    this.special = special;
   }
 
-  public int getName() {
+  public void eat() {
+    hp += 15;
+  }
+
+  ;
+
+  public abstract void speaks();
+
+  public String getName() {
     return name;
   }
 
-  public void setName(int name) {
+  public void setName(String name) {
     this.name = name;
   }
 
@@ -63,5 +76,29 @@ public abstract class Pokemon {
 
   public void setWeight(double weight) {
     this.weight = weight;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public String getSpecial() {
+    return special;
+  }
+
+  public void setSpecial(String special) {
+    this.special = special;
+  }
+
+  public int getDefence() {
+    return defence;
+  }
+
+  public void setDefence(int defence) {
+    this.defence = defence;
   }
 }
