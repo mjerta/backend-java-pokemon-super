@@ -18,7 +18,12 @@ public class ElectricPokemon extends Pokemon {
   }
 
   public void thunderShock(Pokemon challanger) {
-    int damage = 60;
+    int damage;
+    if (voltage == 45) {
+      damage = 90;
+    } else {
+      damage = 60;
+    }
     int currentHp = challanger.getHp();
     int defence = challanger.getDefence();
     challanger.setHp(currentHp - damage + defence);
@@ -27,7 +32,11 @@ public class ElectricPokemon extends Pokemon {
   }
 
   public void increaseVoltage() {
-    voltage += 15;
+    if (voltage < 45) {
+      voltage += 15;
+    } else {
+      System.out.println("max has been reached");
+    }
   }
 
   public void increaseSpeed() {

@@ -31,6 +31,12 @@ public class Main {
     pikachu.speaks();
     pikachu.thunderShock(squirtle);
     System.out.println("Hp of squirtle: " + squirtle.getHp());
+    pikachu.increaseVoltage();
+    pikachu.increaseVoltage();
+    pikachu.increaseVoltage();
+    pikachu.thunderShock(squirtle);
+    System.out.println("Hp of squirtle: " + squirtle.getHp());
+    
   }
 
   // When everything is set up I want to be able to base on a scanner system to give a ramdon challenger
