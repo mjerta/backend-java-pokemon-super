@@ -2,7 +2,8 @@ package nl.novi;
 
 public class FirePokemon extends Pokemon {
 
-  private String attack;
+  private int flameTemperature; // adds up to damage
+  private int heatShield; // adds up to the defence
 
   public FirePokemon(int level, int hp, int xp, double height, double weight, int defence) {
     super(level, hp, xp, height, weight, defence);
@@ -21,14 +22,23 @@ public class FirePokemon extends Pokemon {
     int currentHp = challanger.getHp();
     int defence = challanger.getDefence();
     challanger.setHp(currentHp - damage + defence);
+    super.setAttack("flame thrower");
     System.out.println("Charmender Flametrower now!!");
   }
 
-  public String getAttack() {
-    return attack;
+  public void increaseFlameTemperature() {
+    flameTemperature += 15;
   }
 
-  public void setAttack(String attack) {
-    this.attack = attack;
+  public void increaseHeatShield() {
+    heatShield = 15;
+  }
+
+  public void resetFlameTemperature() {
+    flameTemperature = 0;
+  }
+
+  public void resetHeatShield() {
+    heatShield = 0;
   }
 }

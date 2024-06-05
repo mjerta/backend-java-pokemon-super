@@ -4,7 +4,7 @@ public class Main {
 
   // First i will one super class pokemon
 
-  // I will make 4 suv classes ( this wil serve as fire, water, grass, and electric)
+  // I will make 4 sub classes ( this wil serve as fire, water, grass, and electric)
 
   // These will in turn also serve out as charmender, squirtle, bulbasaur and pikachu
 
@@ -17,14 +17,20 @@ public class Main {
 
     FirePokemon charmender = new FirePokemon(50, 100, 0, 50, 50, 20);
     WaterPokemon squirtle = new WaterPokemon(50, 100, 0, 50, 50, 20);
+    GrassPokemon bulbasaur = new GrassPokemon(50, 100, 0, 50, 50, 30);
+    ElectricPokemon pikachu = new ElectricPokemon(50, 100, 0, 50, 50, 30);
     charmender.speaks();
     System.out.println("Hp of squirtle: " + squirtle.getHp());
     charmender.flameThrower(squirtle);
     System.out.println("Hp of squirtle: " + squirtle.getHp());
     squirtle.speaks();
     System.out.println("Hp of charmender: " + charmender.getHp());
-    squirtle.watergun(charmender);
+    squirtle.waterGun(charmender);
     System.out.println("Hp of charmender: " + charmender.getHp());
+    bulbasaur.speaks();
+    pikachu.speaks();
+    pikachu.thunderShock(squirtle);
+    System.out.println("Hp of squirtle: " + squirtle.getHp());
   }
 
   // When everything is set up I want to be able to base on a scanner system to give a ramdon challenger

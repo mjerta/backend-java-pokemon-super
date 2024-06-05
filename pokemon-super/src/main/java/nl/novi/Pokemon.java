@@ -1,6 +1,7 @@
 package nl.novi;
 
 public abstract class Pokemon {
+  private String attack;
   private String name;
   private int level;
   private int hp;
@@ -20,6 +21,14 @@ public abstract class Pokemon {
     this.defence = defence;
 //    this.type = type;
 //    this.special = special;
+  }
+
+  public String getAttack() {
+    return attack;
+  }
+
+  public void setAttack(String attack) {
+    this.attack = attack;
   }
 
   public void eat() {
