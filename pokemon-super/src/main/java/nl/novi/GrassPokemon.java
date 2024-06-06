@@ -20,8 +20,9 @@ public class GrassPokemon extends Pokemon {
   public void razorLead(Pokemon challanger) {
     int damage = 40;
     int currentHp = challanger.getHp();
-    int defence = challanger.getDefence();
+    int defence = challanger.getCurrentDefenceLevel();
     challanger.setHp(currentHp - damage + defence);
+    challanger.resetDefenceLevel();
     super.setAttack("razor lead");
     System.out.println("Bulbasau rzaor now!!");
   }

@@ -20,7 +20,7 @@ public class FirePokemon extends Pokemon {
   public void flameThrower(Pokemon challanger) {
     int damage = 40;
     int currentHp = challanger.getHp();
-    int defence = challanger.getDefence();
+    int defence = challanger.getCurrentDefenceLevel();
     challanger.setHp(currentHp - damage + defence);
     super.setAttack("flame thrower");
     System.out.println("Charmender Flametrower now!!");

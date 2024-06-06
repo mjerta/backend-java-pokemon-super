@@ -10,15 +10,16 @@ public abstract class Pokemon {
   private double weight;
   private String type;
   private String special;
-  private int defence;
+  private int defaultDefenceLevel;
+  private int currentDefenceLevel;
 
-  public Pokemon(int level, int hp, int xp, double height, double weight, int defence) {
+  public Pokemon(int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
     this.level = level;
     this.hp = hp;
     this.xp = xp;
     this.height = height;
     this.weight = weight;
-    this.defence = defence;
+    this.defaultDefenceLevel = defaultDefenceLevel;
 //    this.type = type;
 //    this.special = special;
   }
@@ -35,7 +36,9 @@ public abstract class Pokemon {
     hp += 15;
   }
 
-  ;
+  public void resetDefenceLevel() {
+    currentDefenceLevel = defaultDefenceLevel;
+  }
 
   public abstract void speaks();
 
@@ -103,11 +106,19 @@ public abstract class Pokemon {
     this.special = special;
   }
 
-  public int getDefence() {
-    return defence;
+  public int getDefaultDefenceLevel() {
+    return defaultDefenceLevel;
   }
 
-  public void setDefence(int defence) {
-    this.defence = defence;
+  public void setDefaultDefenceLevel(int defaultDefenceLevel) {
+    this.defaultDefenceLevel = defaultDefenceLevel;
+  }
+
+  public int getCurrentDefenceLevel() {
+    return currentDefenceLevel;
+  }
+
+  public void setCurrentDefenceLevel(int currentDefenceLevel) {
+    this.currentDefenceLevel = currentDefenceLevel;
   }
 }

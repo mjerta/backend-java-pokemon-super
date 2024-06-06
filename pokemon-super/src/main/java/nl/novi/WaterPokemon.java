@@ -20,8 +20,9 @@ public class WaterPokemon extends Pokemon {
   public void waterGun(Pokemon challanger) {
     int damage = 50;
     int currentHp = challanger.getHp();
-    int defence = challanger.getDefence();
+    int defence = challanger.getCurrentDefenceLevel();
     challanger.setHp(currentHp - damage + defence);
+    challanger.resetDefenceLevel();
     super.setAttack("water gun");
     System.out.println("Squirtle watergun now!");
   }

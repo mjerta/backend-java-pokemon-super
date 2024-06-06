@@ -19,24 +19,18 @@ public class Main {
     WaterPokemon squirtle = new WaterPokemon(50, 100, 0, 50, 50, 20);
     GrassPokemon bulbasaur = new GrassPokemon(50, 100, 0, 50, 50, 30);
     ElectricPokemon pikachu = new ElectricPokemon(50, 100, 0, 50, 50, 30);
-    charmender.speaks();
-    System.out.println("Hp of squirtle: " + squirtle.getHp());
-    charmender.flameThrower(squirtle);
-    System.out.println("Hp of squirtle: " + squirtle.getHp());
-    squirtle.speaks();
-    System.out.println("Hp of charmender: " + charmender.getHp());
-    squirtle.waterGun(charmender);
-    System.out.println("Hp of charmender: " + charmender.getHp());
-    bulbasaur.speaks();
-    pikachu.speaks();
-    pikachu.thunderShock(squirtle);
-    System.out.println("Hp of squirtle: " + squirtle.getHp());
+
+    //  scenarios can play out here
     pikachu.increaseVoltage();
     pikachu.increaseVoltage();
     pikachu.increaseVoltage();
-    pikachu.thunderShock(squirtle);
-    System.out.println("Hp of squirtle: " + squirtle.getHp());
-    
+    pikachu.increaseSpeed();
+    pikachu.increaseSpeed();
+    pikachu.increaseSpeed();
+    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
+    squirtle.waterGun(pikachu);
+    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
+
   }
 
   // When everything is set up I want to be able to base on a scanner system to give a ramdon challenger
