@@ -18,20 +18,42 @@ public class FirePokemon extends Pokemon {
   }
 
   public void flameThrower(Pokemon challanger) {
-    int damage = 40;
+    int damage;
+    if (heatShield == 3) {
+      damage = 70;
+    } else {
+      damage = 40;
+    }
     int currentHp = challanger.getHp();
     int defence = challanger.getCurrentDefenceLevel();
     challanger.setHp(currentHp - damage + defence);
+    challanger.resetDefenceLevel(); // This will reset the defence level to the base level of the challenger
+    resetFlameTemperature(); // This will reset the main power to base level
     super.setAttack("flame thrower");
     System.out.println("Charmender Flametrower now!!");
   }
 
+  // This is a method that will increase the damage
   public void increaseFlameTemperature() {
-    flameTemperature += 15;
+    // This method will increase the voltage level each time, but it has a max of 3 times
+    if (flameTemperature < 3) {
+      flameTemperature++;
+    } else {
+      System.out.println("You've wasted your move, max of flame temperature has been reached!!");
+    }
   }
 
+  // This is a method that will increase the defance level
   public void increaseHeatShield() {
-    heatShield = 15;
+    if (heatShield == 2) {
+      int defence = super.getDefaultDefenceLevel();
+      defence += 30;
+      super.setCurrentDefenceLevel(defence);
+    } else if (heatShield < 2) {
+      heatShield++;
+    } else {
+      System.out.println("You've wasted your move, max of speed has been reached");
+    }
   }
 
   public void resetFlameTemperature() {

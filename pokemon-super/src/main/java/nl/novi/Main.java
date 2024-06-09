@@ -1,5 +1,9 @@
 package nl.novi;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
 
   // First i will one super class pokemon
@@ -15,21 +19,30 @@ public class Main {
 
   public static void main(String[] args) {
 
+    // This pokemons need to be put into an array and there I will make a ramdom  object
     FirePokemon charmender = new FirePokemon(50, 100, 0, 50, 50, 20);
     WaterPokemon squirtle = new WaterPokemon(50, 100, 0, 50, 50, 20);
     GrassPokemon bulbasaur = new GrassPokemon(50, 100, 0, 50, 50, 30);
     ElectricPokemon pikachu = new ElectricPokemon(50, 100, 0, 50, 50, 30);
 
+    List<Pokemon> pokemons = new ArrayList<Pokemon>();
+    pokemons.add(charmender);
+
     //  scenarios can play out here
-    pikachu.increaseVoltage();
-    pikachu.increaseVoltage();
-    pikachu.increaseVoltage();
-    pikachu.increaseSpeed();
-    pikachu.increaseSpeed();
-    pikachu.increaseSpeed();
-    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
-    squirtle.waterGun(pikachu);
-    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
+
+    // this was a manual test
+//    pikachu.increaseVoltage();
+//    pikachu.increaseVoltage();
+//    pikachu.increaseVoltage();
+//    pikachu.increaseVoltage();
+//    pikachu.increaseSpeed();
+//    pikachu.increaseSpeed();
+//    pikachu.increaseSpeed();
+//    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
+//    squirtle.waterGun(pikachu);
+//    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
+
+    Scanner scanner = new Scanner(System.in);
 
   }
 
