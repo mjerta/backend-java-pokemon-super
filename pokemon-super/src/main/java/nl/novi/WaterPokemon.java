@@ -6,7 +6,7 @@ public class WaterPokemon extends Pokemon {
   private int swimmingSpeed; // adds up to the defence
 
   public WaterPokemon() {
-    
+
   }
 
   public WaterPokemon(String name, int level, int hp, int xp, double height, double weight, int defence) {
@@ -16,9 +16,13 @@ public class WaterPokemon extends Pokemon {
     super.setAttack("water gun");
   }
 
+  public WaterPokemon(String name) {
+    super.setName(name);
+  }
+
   @Override
   public void speaks() {
-    System.out.println("Squirtle Squitle");
+    System.out.println(super.getName() + "!!!");
   }
 
   public void waterGun(Pokemon challanger) {
@@ -33,7 +37,7 @@ public class WaterPokemon extends Pokemon {
     challanger.setHp(currentHp - damage + defence);
     challanger.resetDefenceLevel(); // This will reset the defence level to the base level of the challenger
     resetSwimmingSpeed(); // This will reset the main power to base level
-    System.out.println("Squirtle watergun now!");
+    System.out.println(super.getName() + " watergun now!");
     System.out.println(challanger.getName() + " took a hit of " + damage);
   }
 

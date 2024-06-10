@@ -29,7 +29,7 @@ public class GrassPokemon extends Pokemon {
     challanger.setHp(currentHp - damage + defence);
     challanger.resetDefenceLevel(); // This will reset the defence level to the base level challenger
     resetLeafSharpness(); // This will reset the main power to base level
-    System.out.println("Bulbasaur razorleaf now!!");
+    System.out.println(super.getName() + " razorleaf now!!");
     System.out.println(challanger.getName() + " took a hit of " + damage);
   }
 

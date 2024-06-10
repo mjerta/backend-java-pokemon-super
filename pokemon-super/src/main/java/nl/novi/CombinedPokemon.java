@@ -13,6 +13,6 @@ public class CombinedPokemon extends Pokemon {
 
   @Override
   public void speaks() {
-
+    System.out.println(super.getName() + "!!!");
   }
 }

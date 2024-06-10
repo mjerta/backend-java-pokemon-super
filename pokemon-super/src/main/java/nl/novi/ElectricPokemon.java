@@ -16,7 +16,7 @@ public class ElectricPokemon extends Pokemon {
 
   @Override
   public void speaks() {
-    System.out.println("Pika Pika");
+    System.out.println(super.getName() + "!!!");
   }
 
   public void thunderShock(Pokemon challanger) {
@@ -31,7 +31,7 @@ public class ElectricPokemon extends Pokemon {
     challanger.setHp(currentHp - damage + defence);
     challanger.resetDefenceLevel(); // This will reset the defence level to the base level of the challenger
     resetVoltage(); // This will reset the main power to base level
-    System.out.println("Pikachu tundershock now!!");
+    System.out.println(super.getName() + " tundershock now!!");
     System.out.println(challanger.getName() + " took a hit of " + damage);
   }
 

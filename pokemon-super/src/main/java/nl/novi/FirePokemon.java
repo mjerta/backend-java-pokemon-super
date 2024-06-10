@@ -17,9 +17,13 @@ public class FirePokemon extends Pokemon {
     super.setAttack("flame thrower");
   }
 
+  public FirePokemon(String name) {
+    super.setName(name);
+  }
+
   @Override
   public void speaks() {
-    System.out.println("Charmendaaaa");
+    System.out.println(super.getName() + "!!!");
   }
 
   public void flameThrower(Pokemon challanger) {
@@ -34,7 +38,7 @@ public class FirePokemon extends Pokemon {
     challanger.setHp(currentHp - damage + defence);
     challanger.resetDefenceLevel(); // This will reset the defence level to the base level of the challenger
     resetFlameTemperature(); // This will reset the main power to base level
-    System.out.println("Charmender Flametrower now!!");
+    System.out.println(super.getName() + " Flametrower now!!");
     System.out.println(challanger.getName() + " took a hit of " + damage);
   }
 

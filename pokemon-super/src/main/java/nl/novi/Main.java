@@ -20,13 +20,13 @@ public class Main {
 
   public static void main(String[] args) {
 
-    CombinedPokemon volcanion = new CombinedPokemon("Volcanion", 50, 100, 0, 50, 50, 30, new FirePokemon(), new WaterPokemon());
+    CombinedPokemon volcanion = new CombinedPokemon("Volcanion", 50, 100, 0, 50, 50, 30, new FirePokemon("volcanion"),
+      new WaterPokemon("volcanion"));
     if ((volcanion.typeA instanceof FirePokemon && volcanion.typeB instanceof WaterPokemon) ||
       (volcanion.typeB instanceof FirePokemon && volcanion.typeA instanceof WaterPokemon)) {
       FirePokemon firePokemon = (FirePokemon) volcanion.typeA;
       WaterPokemon waterPokemon = (WaterPokemon) volcanion.typeB;
-      String test = waterPokemon.getName();
-      System.out.println(test);
+      volcanion.speaks();
     }
 
     // This pokemons need to be put into an array and there I will make a ramdom  object
@@ -34,13 +34,14 @@ public class Main {
 
     // List of pokemon to fight with
     List<Pokemon> pokemons = new ArrayList<Pokemon>();
-//    pokemons.add(new FirePokemon("Charmender", 50, 100, 0, 50, 50, 20));
-//    pokemons.add(new WaterPokemon("Squirtle", 50, 100, 0, 50, 50, 20));
-//    pokemons.add(new GrassPokemon("Bulbasaur", 50, 100, 0, 50, 50, 30));
+    pokemons.add(new FirePokemon("Charmender", 50, 100, 0, 50, 50, 20));
+    pokemons.add(new WaterPokemon("Squirtle", 50, 100, 0, 50, 50, 20));
+    pokemons.add(new GrassPokemon("Bulbasaur", 50, 100, 0, 50, 50, 30));
     pokemons.add(volcanion);
     Scanner scanner = new Scanner(System.in);
     String input;
     String[] choises = {"1", "2", "3"};
+    String[] choisesCombined = {"1", "2", "3", "4", "5", "6"};
     // Randomize pokemon
     Random random = new Random();
     int randomIndex = random.nextInt(pokemons.size());
@@ -60,7 +61,7 @@ public class Main {
     if (input.equals("y")) {
       // this while loop will break out if the game has been won 3 times
       while (true) {
-        if (countWon >= 3) {
+        if (countWon >= pokemons.size()) {
           System.out.println("Congratulations, you just won the tournament");
           break;
 
@@ -223,7 +224,73 @@ public class Main {
               (combinedPokemon.typeB instanceof FirePokemon && combinedPokemon.typeA instanceof WaterPokemon)) {
               FirePokemon firePokemon = (FirePokemon) combinedPokemon.typeA;
               WaterPokemon waterPokemon = (WaterPokemon) combinedPokemon.typeB;
-              break;
+
+              System.out.println("Goodluck, your challenger is " + combinedPokemon.getName());
+              while (true) {
+                if (pikachu.getHp() <= 0) {
+                  System.out.println("You lost the game!");
+                  break;
+                }
+                System.out.println("You can choose the following:");
+                System.out.println("1 for " + pikachu.getAttack() + " - 2 to upgrade  your power with " + pikachu.getPowerName() +
+                  " - 3 to upgrade your defence with " + pikachu.getDefenceName());
+                input = scanner.nextLine();
+                // your turn
+                if (input.equals("1")) {
+                  pikachu.thunderShock(combinedPokemon);
+                  printOutValuesDefender(combinedPokemon);
+                } else if (input.equals("2")) {
+                  pikachu.increaseVoltage();
+                } else if (input.equals("3")) {
+                  pikachu.increaseSpeed();
+                }
+                if (combinedPokemon.getHp() <= 0) {
+                  System.out.println("You won!");
+                  pokemons.remove(combinedPokemon);
+                  if (pokemons.size() > 0) {
+                    randomIndex = random.nextInt(pokemons.size());
+                    randomPokemon = pokemons.get(randomIndex);
+                  }
+                  countWon++;
+                  break;
+                }
+                System.out.println();
+                //challengers turn
+                Random index = new Random();
+                int ramdomIndex = index.nextInt(choisesCombined.length);
+                String randomChoise = choisesCombined[ramdomIndex];
+                switch (randomChoise) {
+                  case "1":
+                    firePokemon.flameThrower(pikachu);
+                    printOutValuesDefender(pikachu);
+                    System.out.println();
+                    break;
+
+                  case "2":
+                    waterPokemon.waterGun(pikachu);
+                    printOutValuesDefender(pikachu);
+                    System.out.println();
+                    break;
+                  case "3":
+                    firePokemon.increaseFlameTemperature();
+                    System.out.println();
+                    break;
+                  case "4":
+                    waterPokemon.increaseWaterPressure();
+                    System.out.println();
+                  case "5":
+                    firePokemon.increaseHeatShield();
+                    System.out.println();
+                    break;
+                  case "6":
+                    waterPokemon.increasSwimmingSpeed();
+                    System.out.println();
+                    break;
+                  default:
+                    System.out.println("Invalid choice");
+                    break;
+                }
+              }
             }
           }
         }
@@ -231,19 +298,6 @@ public class Main {
     } else {
       System.out.println("The game has been stopped.");
     }
-
-    // this was a manual test
-//    pikachu.increaseVoltage();
-//    pikachu.increaseVoltage();
-//    pikachu.increaseVoltage();
-//    pikachu.increaseVoltage();
-//    pikachu.increaseSpeed();
-//    pikachu.increaseSpeed();
-//    pikachu.increaseSpeed();
-//    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
-//    squirtle.waterGun(pikachu);
-//    System.out.println("Defence level of pikachu: " + pikachu.getCurrentDefenceLevel());
-
   }
 
   // with every draw there will be a report of the damage being done and the current hp
