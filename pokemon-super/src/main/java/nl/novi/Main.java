@@ -63,7 +63,7 @@ public class Main {
         }
         else {
 
-          // the following will cast the randomPokeom instance of into the specific type
+          // the following will cast the randomPokeom instance of into the specific type -- reduced this part to 23 lines
           if (randomPokemon instanceof FirePokemon firePokemon) {
             System.out.println("Goodluck, your challenger is " + firePokemon.getName());
             // create a while loop to continue the fight
@@ -92,7 +92,7 @@ public class Main {
             }
             // the following will cast the instance of into the specific type
           }
-          // the following will cast the randomPokeom instance of into the specific type
+          // the following will cast the randomPokeom instance of into the specific type -- this part is still 50 lines
           else if (randomPokemon instanceof WaterPokemon waterPokemon) {
             System.out.println(waterPokemon.getHp());
             System.out.println("Goodluck, your challenger is " + waterPokemon.getName());
@@ -146,10 +146,10 @@ public class Main {
             }
             // the following will cast the instance of into the specific type
           }
-          // the following will cast the randomPokeom instance of into the specific type
+          // the following will cast the randomPokeom instance of into the specific type -- this part is still 50 lines
           else if (randomPokemon instanceof GrassPokemon grassPokemon) {
             //  GrassPokemon grassPokemon = (GrassPokemon) randomPokemon; I kept on example of how I did it withouthn the casting
-            //  directly into grasspokemon inside thje else if
+            //  directly into grasspokemon inside the else if
             System.out.println(grassPokemon.getHp());
             System.out.println("Goodluck, your challenger is " + grassPokemon.getName());
             // create a while loop to continue the fight
@@ -201,7 +201,7 @@ public class Main {
               }
             }
           }
-          // the following will cast the randomPokeom instance of into the specific type
+          // the following will cast the randomPokeom instance of into the specific type --
           else if (randomPokemon instanceof CombinedPokemon combinedPokemon) {
             // the following will cast the combinedPokemon instance of into 2 specific types
             if ((combinedPokemon.typeA instanceof FirePokemon && combinedPokemon.typeB instanceof WaterPokemon) ||
