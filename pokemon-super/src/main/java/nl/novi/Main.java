@@ -6,17 +6,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-
-  // First i will one super class pokemon
-
-  // I will make 4 sub classes ( this wil serve as fire, water, grass, and electric)
-
-  // These will in turn also serve out as charmender, squirtle, bulbasaur and pikachu
-
-  // Later i will make more subclasses so serve out more pokemon
-
-  // First I will make 2 instances of different pokemons.
-  // Then I will try to re-inact them to do a fight
+  //  First i will one super class pokemon
+  //  I will make 4 sub classes ( this wil serve as fire, water, grass, and electric)
+  //  These will in turn also serve out as charmender, squirtle, bulbasaur and pikachu etc
+  //  Later i will make more subclasses so serve out more pokemon - This would become combinedClasses that use composition
+  //  I will reinact them to make a fight manually
+  //  Later I will create the logic that you really can play the game
 
   public static void main(String[] args) {
 
@@ -32,20 +27,21 @@ public class Main {
     pokemons.add(new CombinedPokemon("Volcanion", 50, 100, 0, 50, 50, 30, new FirePokemon("volcanion"),
       new WaterPokemon("volcanion")));
     pokemons.add(new CombinedPokemon("Ludicolo", 50, 100, 0, 50, 50, 20, new WaterPokemon("ludicolo"), new GrassPokemon("ludicolo")));
+
+    // Initiate Scanner object
     Scanner scanner = new Scanner(System.in);
     String input;
-    String[] choises = {"1", "2", "3"};
-    String[] choisesCombined = {"1", "2", "3", "4", "5", "6"};
+    String[] choises = {"1", "2", "3"}; // This will be used for serving the 3 choises available in the 'regular' pokemons
+    String[] choisesCombined = {"1", "2", "3", "4", "5", "6"}; // This will be served for the combined pokemons
+
     // Randomize pokemon
     Random random = new Random();
     int randomIndex = random.nextInt(pokemons.size());
     // The pokemon that will be fight with.
     Pokemon randomPokemon = pokemons.get(randomIndex);
-    // the following a some variables to keep up the score and one for the troffee
-    int countWon = 0;
 
     //  - this game will just give a couple of choises:
-    //  - start the game( this will start a tournament of 3 mathces)
+    //  - start the game( this will start a tournament of 3 matches)
     //  - choose attack( you are only to play with pikachu for now)
     //  - defend move to add defence against challenger
     //  - power up move will add extra damage to challenger
@@ -64,16 +60,15 @@ public class Main {
         if (pokemons.isEmpty()) {
           System.out.println("Congratulations, you just won the tournament");
           break;
-
-        } else {
+        }
+        else {
 
           // the following will cast the instance of into the specific type
           if (randomPokemon instanceof FirePokemon firePokemon) {
             System.out.println("Goodluck, your challenger is " + firePokemon.getName());
             // create a while loop to continue the fight
             while (true) {
-              if (pikachu.getHp() <= 0) {
-                System.out.println("You lost the game!");
+              if (checkIfLost(pikachu)) {
                 break;
               }
               System.out.println("You can choose the following:");
@@ -84,9 +79,11 @@ public class Main {
               if (input.equals("1")) {
                 pikachu.thunderShock(firePokemon);
                 printOutValuesDefender(firePokemon);
-              } else if (input.equals("2")) {
+              }
+              else if (input.equals("2")) {
                 pikachu.increaseVoltage();
-              } else if (input.equals("3")) {
+              }
+              else if (input.equals("3")) {
                 pikachu.increaseSpeed();
               }
               if (firePokemon.getHp() <= 0) {
@@ -96,7 +93,6 @@ public class Main {
                   randomIndex = random.nextInt(pokemons.size());
                   randomPokemon = pokemons.get(randomIndex);
                 }
-                countWon++;
                 break;
               }
               System.out.println();
@@ -108,16 +104,19 @@ public class Main {
                 firePokemon.flameThrower(pikachu);
                 printOutValuesDefender(pikachu);
                 System.out.println();
-              } else if (randomChoise.equals("2")) {
+              }
+              else if (randomChoise.equals("2")) {
                 firePokemon.increaseFlameTemperature();
                 System.out.println();
-              } else if (randomChoise.equals("3")) {
+              }
+              else if (randomChoise.equals("3")) {
                 firePokemon.increaseHeatShield();
                 System.out.println();
               }
             }
             // the following will cast the instance of into the specific type
-          } else if (randomPokemon instanceof WaterPokemon waterPokemon) {
+          }
+          else if (randomPokemon instanceof WaterPokemon waterPokemon) {
             System.out.println(waterPokemon.getHp());
             System.out.println("Goodluck, your challenger is " + waterPokemon.getName());
             // create a while loop to continue the fight
@@ -133,9 +132,11 @@ public class Main {
               if (input.equals("1")) {
                 pikachu.thunderShock(waterPokemon);
                 printOutValuesDefender(waterPokemon);
-              } else if (input.equals("2")) {
+              }
+              else if (input.equals("2")) {
                 pikachu.increaseVoltage();
-              } else if (input.equals("3")) {
+              }
+              else if (input.equals("3")) {
                 pikachu.increaseSpeed();
               }
               if (waterPokemon.getHp() <= 0) {
@@ -145,7 +146,6 @@ public class Main {
                   randomIndex = random.nextInt(pokemons.size());
                   randomPokemon = pokemons.get(randomIndex);
                 }
-                countWon++;
                 break;
               }
               System.out.println();
@@ -157,16 +157,19 @@ public class Main {
                 waterPokemon.waterGun(pikachu);
                 printOutValuesDefender(pikachu);
                 System.out.println();
-              } else if (randomChoise.equals("2")) {
+              }
+              else if (randomChoise.equals("2")) {
                 waterPokemon.increaseWaterPressure();
                 System.out.println();
-              } else if (randomChoise.equals("3")) {
+              }
+              else if (randomChoise.equals("3")) {
                 waterPokemon.increasSwimmingSpeed();
                 System.out.println();
               }
             }
             // the following will cast the instance of into the specific type
-          } else if (randomPokemon instanceof GrassPokemon grassPokemon) {
+          }
+          else if (randomPokemon instanceof GrassPokemon grassPokemon) {
             //  GrassPokemon grassPokemon = (GrassPokemon) randomPokemon; I kept on example of how I did it withouthn the casting
             //  directly into grasspokemon inside thje else if
             System.out.println(grassPokemon.getHp());
@@ -184,9 +187,11 @@ public class Main {
               if (input.equals("1")) {
                 pikachu.thunderShock(grassPokemon);
                 printOutValuesDefender(grassPokemon);
-              } else if (input.equals("2")) {
+              }
+              else if (input.equals("2")) {
                 pikachu.increaseVoltage();
-              } else if (input.equals("3")) {
+              }
+              else if (input.equals("3")) {
                 pikachu.increaseSpeed();
               }
               if (grassPokemon.getHp() <= 0) {
@@ -196,7 +201,6 @@ public class Main {
                   randomIndex = random.nextInt(pokemons.size());
                   randomPokemon = pokemons.get(randomIndex);
                 }
-                countWon++;
                 break;
               }
               System.out.println();
@@ -208,15 +212,18 @@ public class Main {
                 grassPokemon.razorLead(pikachu);
                 printOutValuesDefender(pikachu);
                 System.out.println();
-              } else if (randomChoise.equals("2")) {
+              }
+              else if (randomChoise.equals("2")) {
                 grassPokemon.increaseLeafSharpness();
                 System.out.println();
-              } else if (randomChoise.equals("3")) {
+              }
+              else if (randomChoise.equals("3")) {
                 grassPokemon.increasePhotosynthesisRate();
                 System.out.println();
               }
             }
-          } else if (randomPokemon instanceof CombinedPokemon combinedPokemon) {
+          }
+          else if (randomPokemon instanceof CombinedPokemon combinedPokemon) {
             if ((combinedPokemon.typeA instanceof FirePokemon && combinedPokemon.typeB instanceof WaterPokemon) ||
               (combinedPokemon.typeB instanceof FirePokemon && combinedPokemon.typeA instanceof WaterPokemon)) {
               FirePokemon firePokemon = (FirePokemon) combinedPokemon.typeA;
@@ -236,9 +243,11 @@ public class Main {
                 if (input.equals("1")) {
                   pikachu.thunderShock(combinedPokemon);
                   printOutValuesDefender(combinedPokemon);
-                } else if (input.equals("2")) {
+                }
+                else if (input.equals("2")) {
                   pikachu.increaseVoltage();
-                } else if (input.equals("3")) {
+                }
+                else if (input.equals("3")) {
                   pikachu.increaseSpeed();
                 }
                 if (combinedPokemon.getHp() <= 0) {
@@ -248,7 +257,6 @@ public class Main {
                     randomIndex = random.nextInt(pokemons.size());
                     randomPokemon = pokemons.get(randomIndex);
                   }
-                  countWon++;
                   break;
                 }
                 System.out.println();
@@ -288,7 +296,8 @@ public class Main {
                     break;
                 }
               }
-            } else if ((combinedPokemon.typeA instanceof WaterPokemon && combinedPokemon.typeB instanceof GrassPokemon) ||
+            }
+            else if ((combinedPokemon.typeA instanceof WaterPokemon && combinedPokemon.typeB instanceof GrassPokemon) ||
               (combinedPokemon.typeB instanceof WaterPokemon && combinedPokemon.typeA instanceof GrassPokemon)) {
               WaterPokemon waterPokemon = (WaterPokemon) combinedPokemon.typeA;
               GrassPokemon grassPokemon = (GrassPokemon) combinedPokemon.typeB;
@@ -307,9 +316,11 @@ public class Main {
                 if (input.equals("1")) {
                   pikachu.thunderShock(combinedPokemon);
                   printOutValuesDefender(combinedPokemon);
-                } else if (input.equals("2")) {
+                }
+                else if (input.equals("2")) {
                   pikachu.increaseVoltage();
-                } else if (input.equals("3")) {
+                }
+                else if (input.equals("3")) {
                   pikachu.increaseSpeed();
                 }
                 if (combinedPokemon.getHp() <= 0) {
@@ -319,7 +330,6 @@ public class Main {
                     randomIndex = random.nextInt(pokemons.size());
                     randomPokemon = pokemons.get(randomIndex);
                   }
-                  countWon++;
                   break;
                 }
                 System.out.println();
@@ -363,7 +373,8 @@ public class Main {
           }
         }
       }
-    } else {
+    }
+    else {
       System.out.println("The game has been stopped.");
     }
   }
@@ -371,6 +382,20 @@ public class Main {
   public static void printOutValuesDefender(Pokemon pokemon) {
     pokemon.speaks();
     System.out.println("The hp of " + pokemon.getName() + " is " + pokemon.getHp());
+  }
+
+  public static boolean checkIfLost(Pokemon pokemon) {
+    if (pokemon.getHp() <= 0) {
+      System.out.println("You lost the game!");
+      return true;
+    }
+    return false;
+  }
+
+  public static void printOutRegularOptions(Pokemon pokemon) {
+    System.out.println("You can choose the following:");
+    System.out.println("1 for " + pokemon.getAttack() + " - 2 to upgrade  your power with " + pokemon.getPowerName() +
+      " - 3 to upgrade your defence with " + pokemon.getDefenceName());
   }
 }
 
