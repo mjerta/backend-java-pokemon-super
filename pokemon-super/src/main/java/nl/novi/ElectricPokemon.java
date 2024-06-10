@@ -5,6 +5,10 @@ public class ElectricPokemon extends Pokemon {
   private int voltage; // adds to the damage
   private int speed; // adds to the defence
 
+  public ElectricPokemon() {
+    super();
+  }
+
   public ElectricPokemon(String name, int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
     super(name, level, hp, xp, height, weight, defaultDefenceLevel);
     super.setType("Electric Pokemon");
@@ -12,6 +16,10 @@ public class ElectricPokemon extends Pokemon {
     super.setDefenceName("speed");
     super.setPowerName("voltage");
     super.setAttack("thunder shock");
+  }
+
+  public ElectricPokemon(String name) {
+    super.setName(name);
   }
 
   @Override

@@ -6,7 +6,7 @@ public class WaterPokemon extends Pokemon {
   private int swimmingSpeed; // adds up to the defence
 
   public WaterPokemon() {
-
+    super();
   }
 
   public WaterPokemon(String name, int level, int hp, int xp, double height, double weight, int defence) {
