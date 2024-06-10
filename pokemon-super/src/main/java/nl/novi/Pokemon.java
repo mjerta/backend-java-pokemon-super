@@ -27,6 +27,10 @@ public abstract class Pokemon {
 //    this.special = special;
   }
 
+  public Pokemon() {
+
+  }
+
   public String getAttack() {
     return attack;
   }

@@ -1,8 +1,5 @@
 package nl.novi;
 
-import javax.lang.model.element.NestingKind;
-import java.awt.geom.PathIterator;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,14 +20,24 @@ public class Main {
 
   public static void main(String[] args) {
 
+    CombinedPokemon volcanion = new CombinedPokemon("Volcanion", 50, 100, 0, 50, 50, 30, new FirePokemon(), new WaterPokemon());
+    if ((volcanion.typeA instanceof FirePokemon && volcanion.typeB instanceof WaterPokemon) ||
+      (volcanion.typeB instanceof FirePokemon && volcanion.typeA instanceof WaterPokemon)) {
+      FirePokemon firePokemon = (FirePokemon) volcanion.typeA;
+      WaterPokemon waterPokemon = (WaterPokemon) volcanion.typeB;
+      String test = waterPokemon.getName();
+      System.out.println(test);
+    }
+
     // This pokemons need to be put into an array and there I will make a ramdom  object
     ElectricPokemon pikachu = new ElectricPokemon("Pikachu", 50, 100, 0, 50, 50, 30); // your current pokemon.
 
     // List of pokemon to fight with
     List<Pokemon> pokemons = new ArrayList<Pokemon>();
-    pokemons.add(new FirePokemon("Charmender", 50, 100, 0, 50, 50, 20));
-    pokemons.add(new WaterPokemon("Squirtle", 50, 100, 0, 50, 50, 20));
-    pokemons.add(new GrassPokemon("Bulbasaur", 50, 100, 0, 50, 50, 30));
+//    pokemons.add(new FirePokemon("Charmender", 50, 100, 0, 50, 50, 20));
+//    pokemons.add(new WaterPokemon("Squirtle", 50, 100, 0, 50, 50, 20));
+//    pokemons.add(new GrassPokemon("Bulbasaur", 50, 100, 0, 50, 50, 30));
+    pokemons.add(volcanion);
     Scanner scanner = new Scanner(System.in);
     String input;
     String[] choises = {"1", "2", "3"};
@@ -208,6 +215,15 @@ public class Main {
                 grassPokemon.increasePhotosynthesisRate();
                 System.out.println();
               }
+            }
+          } else if (randomPokemon instanceof CombinedPokemon) {
+            CombinedPokemon combinedPokemon = (CombinedPokemon) randomPokemon;
+
+            if ((combinedPokemon.typeA instanceof FirePokemon && combinedPokemon.typeB instanceof WaterPokemon) ||
+              (combinedPokemon.typeB instanceof FirePokemon && combinedPokemon.typeA instanceof WaterPokemon)) {
+              FirePokemon firePokemon = (FirePokemon) combinedPokemon.typeA;
+              WaterPokemon waterPokemon = (WaterPokemon) combinedPokemon.typeB;
+              break;
             }
           }
         }

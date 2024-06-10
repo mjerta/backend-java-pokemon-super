@@ -5,6 +5,10 @@ public class WaterPokemon extends Pokemon {
   private int waterPressure; // adds up to damage
   private int swimmingSpeed; // adds up to the defence
 
+  public WaterPokemon() {
+    
+  }
+
   public WaterPokemon(String name, int level, int hp, int xp, double height, double weight, int defence) {
     super(name, level, hp, xp, height, weight, defence);
     super.setType("Water Pokemon");
