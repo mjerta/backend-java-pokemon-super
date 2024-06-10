@@ -12,6 +12,8 @@ public abstract class Pokemon {
   private String special;
   private int defaultDefenceLevel;
   private int currentDefenceLevel;
+  private String powerName;
+  private String defenceName;
 
   public Pokemon(int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
     this.level = level;
@@ -120,5 +122,21 @@ public abstract class Pokemon {
 
   public void setCurrentDefenceLevel(int currentDefenceLevel) {
     this.currentDefenceLevel = currentDefenceLevel;
+  }
+
+  public String getPowerName() {
+    return powerName;
+  }
+
+  public void setPowerName(String powerName) {
+    this.powerName = powerName;
+  }
+
+  public String getDefenceName() {
+    return defenceName;
+  }
+
+  public void setDefenceName(String defenceName) {
+    this.defenceName = defenceName;
   }
 }

@@ -10,6 +10,7 @@ public class GrassPokemon extends Pokemon {
     super.setName("Bulbasaur");
     super.setType("Grass Pokemon");
     super.setSpecial("Boem");
+    super.setAttack("razor lead");
   }
 
   @Override
@@ -19,7 +20,7 @@ public class GrassPokemon extends Pokemon {
 
   public void razorLead(Pokemon challanger) {
     int damage;
-    if (leafSharpness == 3) {
+    if (leafSharpness >= 3) {
       damage = 100;
     } else {
       damage = 40;
@@ -29,14 +30,18 @@ public class GrassPokemon extends Pokemon {
     challanger.setHp(currentHp - damage + defence);
     challanger.resetDefenceLevel(); // This will reset the defence level to the base level challenger
     resetLeafSharpness(); // This will reset the main power to base level
-    super.setAttack("razor lead");
     System.out.println("Bulbasaur razorleaf now!!");
+    System.out.println(challanger.getName() + " took a hit of " + damage);
   }
 
   // This is a method that will increase the damage
   public void increaseLeafSharpness() {
     // This method will increase the leafsharpness level each time, but it has a max of 3 times
     if (leafSharpness < 3) {
+      leafSharpness++;
+      System.out.println("Leaf sharpness pressure level is being added to " + super.getName());
+    } else if (leafSharpness == 3) {
+      System.out.println("Lets go, your leave sharpness level has reach its maximum");
       leafSharpness++;
     } else {
       System.out.println("You've wasted your move, max of voltage has been reached");
@@ -46,10 +51,12 @@ public class GrassPokemon extends Pokemon {
   // This is a method that will increase the defance level
   public void increasePhotosynthesisRate() {
     if (photosynthesisRate == 2) {
+      System.out.println("Photo sytense rate level maximum is being reached to " + super.getName());
       int defence = super.getDefaultDefenceLevel();
       defence += 30;
       super.setCurrentDefenceLevel(defence);
     } else if (photosynthesisRate < 2) {
+      System.out.println("Photo syntese rate level is being added to " + super.getName());
       photosynthesisRate++;
     } else {
       System.out.println("You've wasted your move, max of photosyntehisrate has been reached");
