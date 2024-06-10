@@ -15,7 +15,8 @@ public abstract class Pokemon {
   private String powerName;
   private String defenceName;
 
-  public Pokemon(int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
+  public Pokemon(String name, int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
+    this.name = name;
     this.level = level;
     this.hp = hp;
     this.xp = xp;

@@ -5,10 +5,9 @@ public class ElectricPokemon extends Pokemon {
   private int voltage; // adds to the damage
   private int speed; // adds to the defence
 
-  public ElectricPokemon(int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
-    super(level, hp, xp, height, weight, defaultDefenceLevel);
-    super.setName("Pikachu");
-    super.setType("Grass Pokemon");
+  public ElectricPokemon(String name, int level, int hp, int xp, double height, double weight, int defaultDefenceLevel) {
+    super(name, level, hp, xp, height, weight, defaultDefenceLevel);
+    super.setType("Electric Pokemon");
     super.setSpecial("Boem");
     super.setDefenceName("speed");
     super.setPowerName("voltage");

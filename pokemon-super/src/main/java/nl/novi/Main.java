@@ -24,13 +24,13 @@ public class Main {
   public static void main(String[] args) {
 
     // This pokemons need to be put into an array and there I will make a ramdom  object
-    ElectricPokemon pikachu = new ElectricPokemon(50, 100, 0, 50, 50, 30); // your current pokemon.
+    ElectricPokemon pikachu = new ElectricPokemon("Pikachu", 50, 100, 0, 50, 50, 30); // your current pokemon.
 
     // List of pokemon to fight with
     List<Pokemon> pokemons = new ArrayList<Pokemon>();
-    pokemons.add(new FirePokemon(50, 100, 0, 50, 50, 20));
-    pokemons.add(new WaterPokemon(50, 100, 0, 50, 50, 20));
-    pokemons.add(new GrassPokemon(50, 100, 0, 50, 50, 30));
+    pokemons.add(new FirePokemon("Charmender", 50, 100, 0, 50, 50, 20));
+    pokemons.add(new WaterPokemon("Squirtle", 50, 100, 0, 50, 50, 20));
+    pokemons.add(new GrassPokemon("Bulbasaur", 50, 100, 0, 50, 50, 30));
     Scanner scanner = new Scanner(System.in);
     String input;
     String[] choises = {"1", "2", "3"};
@@ -100,10 +100,13 @@ public class Main {
               if (randomChoise.equals("1")) {
                 firePokemon.flameThrower(pikachu);
                 printOutValuesDefender(pikachu);
+                System.out.println();
               } else if (randomChoise.equals("2")) {
                 firePokemon.increaseFlameTemperature();
+                System.out.println();
               } else if (randomChoise.equals("3")) {
                 firePokemon.increaseHeatShield();
+                System.out.println();
               }
             }
             // the following will cast the instance of into the specific type
@@ -147,10 +150,13 @@ public class Main {
               if (randomChoise.equals("1")) {
                 waterPokemon.waterGun(pikachu);
                 printOutValuesDefender(pikachu);
+                System.out.println();
               } else if (randomChoise.equals("2")) {
                 waterPokemon.increaseWaterPressure();
+                System.out.println();
               } else if (randomChoise.equals("3")) {
                 waterPokemon.increasSwimmingSpeed();
+                System.out.println();
               }
             }
             // the following will cast the instance of into the specific type
@@ -194,10 +200,13 @@ public class Main {
               if (randomChoise.equals("1")) {
                 grassPokemon.razorLead(pikachu);
                 printOutValuesDefender(pikachu);
+                System.out.println();
               } else if (randomChoise.equals("2")) {
                 grassPokemon.increaseLeafSharpness();
+                System.out.println();
               } else if (randomChoise.equals("3")) {
                 grassPokemon.increasePhotosynthesisRate();
+                System.out.println();
               }
             }
           }

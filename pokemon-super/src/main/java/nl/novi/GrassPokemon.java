@@ -5,9 +5,8 @@ public class GrassPokemon extends Pokemon {
   private int leafSharpness; // adds up to the damage
   private int photosynthesisRate; // adds up to the defence
 
-  public GrassPokemon(int level, int hp, int xp, double height, double weight, int defence) {
-    super(level, hp, xp, height, weight, defence);
-    super.setName("Bulbasaur");
+  public GrassPokemon(String name, int level, int hp, int xp, double height, double weight, int defence) {
+    super(name, level, hp, xp, height, weight, defence);
     super.setType("Grass Pokemon");
     super.setSpecial("Boem");
     super.setAttack("razor lead");

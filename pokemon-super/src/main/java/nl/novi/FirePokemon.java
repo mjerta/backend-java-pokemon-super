@@ -5,9 +5,8 @@ public class FirePokemon extends Pokemon {
   private int flameTemperature; // adds up to damage
   private int heatShield; // adds up to the defence
 
-  public FirePokemon(int level, int hp, int xp, double height, double weight, int defence) {
-    super(level, hp, xp, height, weight, defence);
-    super.setName("Charmender");
+  public FirePokemon(String name, int level, int hp, int xp, double height, double weight, int defence) {
+    super(name, level, hp, xp, height, weight, defence);
     super.setType("Fire Pokemon");
     super.setSpecial("Boem");
     super.setAttack("flame thrower");
