@@ -63,31 +63,19 @@ public class Main {
         }
         else {
 
-          // the following will cast the instance of into the specific type
+          // the following will cast the randomPokeom instance of into the specific type
           if (randomPokemon instanceof FirePokemon firePokemon) {
             System.out.println("Goodluck, your challenger is " + firePokemon.getName());
             // create a while loop to continue the fight
             while (true) {
-              if (checkIfLost(pikachu)) {
+              if (lostMatch(pikachu)) {
                 break;
               }
-              System.out.println("You can choose the following:");
-              System.out.println("1 for " + pikachu.getAttack() + " - 2 to upgrade  your power with " + pikachu.getPowerName() +
-                " - 3 to upgrade your defence with " + pikachu.getDefenceName());
+              printOutRegularOptions(pikachu);
               input = scanner.nextLine();
               // your turn
-              if (input.equals("1")) {
-                pikachu.thunderShock(firePokemon);
-                printOutValuesDefender(firePokemon);
-              }
-              else if (input.equals("2")) {
-                pikachu.increaseVoltage();
-              }
-              else if (input.equals("3")) {
-                pikachu.increaseSpeed();
-              }
-              if (firePokemon.getHp() <= 0) {
-                System.out.println("You won!");
+              performChoise(pikachu, firePokemon, input);
+              if (wonMatch(firePokemon)) {
                 pokemons.remove(firePokemon);
                 if (!pokemons.isEmpty()) {
                   randomIndex = random.nextInt(pokemons.size());
@@ -100,22 +88,11 @@ public class Main {
               Random index = new Random();
               int ramdomIndex = index.nextInt(choises.length);
               String randomChoise = choises[ramdomIndex];
-              if (randomChoise.equals("1")) {
-                firePokemon.flameThrower(pikachu);
-                printOutValuesDefender(pikachu);
-                System.out.println();
-              }
-              else if (randomChoise.equals("2")) {
-                firePokemon.increaseFlameTemperature();
-                System.out.println();
-              }
-              else if (randomChoise.equals("3")) {
-                firePokemon.increaseHeatShield();
-                System.out.println();
-              }
+              perfomChoiseChallenger(pikachu, firePokemon, randomChoise);
             }
             // the following will cast the instance of into the specific type
           }
+          // the following will cast the randomPokeom instance of into the specific type
           else if (randomPokemon instanceof WaterPokemon waterPokemon) {
             System.out.println(waterPokemon.getHp());
             System.out.println("Goodluck, your challenger is " + waterPokemon.getName());
@@ -169,6 +146,7 @@ public class Main {
             }
             // the following will cast the instance of into the specific type
           }
+          // the following will cast the randomPokeom instance of into the specific type
           else if (randomPokemon instanceof GrassPokemon grassPokemon) {
             //  GrassPokemon grassPokemon = (GrassPokemon) randomPokemon; I kept on example of how I did it withouthn the casting
             //  directly into grasspokemon inside thje else if
@@ -223,7 +201,9 @@ public class Main {
               }
             }
           }
+          // the following will cast the randomPokeom instance of into the specific type
           else if (randomPokemon instanceof CombinedPokemon combinedPokemon) {
+            // the following will cast the combinedPokemon instance of into 2 specific types
             if ((combinedPokemon.typeA instanceof FirePokemon && combinedPokemon.typeB instanceof WaterPokemon) ||
               (combinedPokemon.typeB instanceof FirePokemon && combinedPokemon.typeA instanceof WaterPokemon)) {
               FirePokemon firePokemon = (FirePokemon) combinedPokemon.typeA;
@@ -384,9 +364,17 @@ public class Main {
     System.out.println("The hp of " + pokemon.getName() + " is " + pokemon.getHp());
   }
 
-  public static boolean checkIfLost(Pokemon pokemon) {
+  public static boolean lostMatch(Pokemon pokemon) {
     if (pokemon.getHp() <= 0) {
       System.out.println("You lost the game!");
+      return true;
+    }
+    return false;
+  }
+
+  public static boolean wonMatch(Pokemon pokemon) {
+    if (pokemon.getHp() <= 0) {
+      System.out.println("You Won the game!");
       return true;
     }
     return false;
@@ -396,6 +384,45 @@ public class Main {
     System.out.println("You can choose the following:");
     System.out.println("1 for " + pokemon.getAttack() + " - 2 to upgrade  your power with " + pokemon.getPowerName() +
       " - 3 to upgrade your defence with " + pokemon.getDefenceName());
+  }
+
+  public static void performChoise(Pokemon mainPokemon, Pokemon challenger, String input) {
+    if (input.equals("1")) {
+      if (mainPokemon instanceof ElectricPokemon electricPokemon) {
+        electricPokemon.thunderShock(challenger);
+      }
+      printOutValuesDefender(challenger);
+    }
+    else if (input.equals("2")) {
+      if (mainPokemon instanceof ElectricPokemon electricPokemon)
+        electricPokemon.increaseVoltage();
+    }
+    else if (input.equals("3")) {
+      if (mainPokemon instanceof ElectricPokemon electricPokemon)
+        electricPokemon.increaseSpeed();
+    }
+  }
+
+  public static void perfomChoiseChallenger(Pokemon mainPokemon, Pokemon challenger, String randomChoise) {
+    if (randomChoise.equals("1")) {
+      if (challenger instanceof FirePokemon firePokemon) {
+        firePokemon.flameThrower(mainPokemon);
+      }
+      printOutValuesDefender(mainPokemon);
+      System.out.println();
+    }
+    else if (randomChoise.equals("2")) {
+      if (challenger instanceof FirePokemon firePokemon) {
+        firePokemon.increaseFlameTemperature();
+      }
+      System.out.println();
+    }
+    else if (randomChoise.equals("3")) {
+      if (challenger instanceof FirePokemon firePokemon) {
+        firePokemon.increaseHeatShield();
+      }
+      System.out.println();
+    }
   }
 }
 
